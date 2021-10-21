@@ -29,7 +29,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
                     sh "docker login -u gogolevjuri -p ${dockerHubPwd}"
                 }
-                
+                sh "docker tag gogolevjuri/firstapp:${DOCKER_TAG} gogolevjuri/firstapp:latest"
                 sh "docker push gogolevjuri/firstapp:${DOCKER_TAG} "
                 sh "docker push gogolevjuri/firstapp:latest "
             }
