@@ -24,6 +24,15 @@ pipeline {
                 sh "docker build . -t gogolevjuri/firstapp:${DOCKER_TAG} "
             }
         }
+        stage('DockerHub Push'){
+            steps{
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                    sh "docker login -u gogolevjuri -p ${dockerHubPwd}"
+                }
+                
+                sh "docker push gogolevjuri/firstapp:${DOCKER_TAG} "
+            }
+        }
     }
 }
 def getVersion(){
