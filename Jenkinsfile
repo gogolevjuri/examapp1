@@ -31,6 +31,7 @@ pipeline {
                 }
                 
                 sh "docker push gogolevjuri/firstapp:${DOCKER_TAG} "
+                sh "docker push gogolevjuri/firstapp:latest "
             }
         }
     }
