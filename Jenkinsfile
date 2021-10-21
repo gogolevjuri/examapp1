@@ -17,5 +17,10 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        stages{
+		    steps{
+			    sh "docker image build -t my_docker ."
+		    }
+	    }
     }
 }
