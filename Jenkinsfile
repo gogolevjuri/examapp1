@@ -17,14 +17,14 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        stage('Docker test') {
-            steps {
-                //sh "docker image build -t my_docker ."
-                // This step should not normally be used in your script. Consult the inline help for details.
-                withDockerContainer('python:3.9-alpine') {
-                    echo 'fine....'
-                }
+        stage('Docker Build'){
+            steps{
+                sh "docker build . -t gogolevjuri/firstapp:${DOCKER_TAG} "
             }
         }
     }
+}
+def getVersion(){
+    def commitHash = sh label: '', returnStdout: true, script: 'git rev-parse --short HEAD'
+    return commitHash
 }
