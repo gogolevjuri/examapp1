@@ -1,4 +1,4 @@
-pipeline {
+psssipeline {
     agent any
     environment {
       DOCKER_TAG = getVersion()
