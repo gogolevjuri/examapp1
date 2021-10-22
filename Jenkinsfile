@@ -21,17 +21,17 @@ pipeline {
         }
         stage('Docker Build'){
             steps{
-                sh "docker build . -t gogolevjuri/firstapp:latest "
+                //sh "docker build . -t gogolevjuri/firstapp:latest "
             }
         }
         stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u gogolevjuri -p ${dockerHubPwd}"
+                    //sh "docker login -u gogolevjuri -p ${dockerHubPwd}"
                 }
-                sh "docker tag gogolevjuri/firstapp:latest gogolevjuri/firstapp:${DOCKER_TAG}"
-                sh "docker push gogolevjuri/firstapp:${DOCKER_TAG} "
-                sh "docker push gogolevjuri/firstapp:latest "
+                //sh "docker tag gogolevjuri/firstapp:latest gogolevjuri/firstapp:${DOCKER_TAG}"
+                //sh "docker push gogolevjuri/firstapp:${DOCKER_TAG} "
+                //sh "docker push gogolevjuri/firstapp:latest "
             }
         }
     }
