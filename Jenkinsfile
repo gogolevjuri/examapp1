@@ -36,6 +36,9 @@ pipeline {
             }
         }
         stage('clear docker images') {
+            agent {
+                docker { image 'node:16-alpine' }
+            }
             steps {
                 echo 'removing images....'
                 sh "docker rmi gogolevjuri/firstapp:${DOCKER_TAG} "
