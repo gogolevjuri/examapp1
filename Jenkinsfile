@@ -37,6 +37,12 @@ pipeline {
                 //sh "docker push gogolevjuri/firstapp:latest "
             }
         }
+        stage('clear docker images') {
+            steps {
+                echo 'removing images....'
+                sh "docker rmi gogolevjuri/firstapp:${DOCKER_TAG} "
+            }
+        }
     }
 }
 def getVersion(){
