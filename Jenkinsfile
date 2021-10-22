@@ -21,15 +21,15 @@ pipeline {
         }
         stage('Docker Build'){
             steps{
-                sh "docker build . -t gogolevjuri/firstapp:latest "
-                echo 'Deploying....0'
+                echo "Create docker image gogolevjuri/firstapp:${DOCKER_TAG} "
+                sh "docker build . -t gogolevjuri/firstapp:${DOCKER_TAG} "
             }
         }
         stage('DockerHub Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    echo 'Deploying....1'
-                    //sh "docker login -u gogolevjuri -p ${dockerHubPwd}"
+                    echo 'Logging into docker hub'
+                    sh "docker login -u gogolevjuri -p ${dockerHubPwd}"
                 }
                 echo 'Deploying....2'
                 //sh "docker tag gogolevjuri/firstapp:latest gogolevjuri/firstapp:${DOCKER_TAG}"
