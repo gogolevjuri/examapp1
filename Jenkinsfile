@@ -39,6 +39,7 @@ pipeline {
             steps {
                 echo 'removing images....'
                 sh "docker rmi gogolevjuri/firstapp:${DOCKER_TAG} "
+                sh "docker rmi gogolevjuri/firstapp:latest "
             }
         }
     }
