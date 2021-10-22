@@ -3,12 +3,12 @@
   become: True
   tasks:
     - name: Install python pip
-      yum:
-        name: python-pip
+      apt:
+        name: pip
         state: present
     - name: Install docker
-      yum:
-        name: docker
+      apt:
+        name: docker.io
         state: present
     - name: start docker
       service:
