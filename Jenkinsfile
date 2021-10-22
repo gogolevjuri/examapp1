@@ -19,12 +19,6 @@ pipeline {
                 echo 'Deploying....'
             }
         }       
-        stage('Docker clear'){
-            steps{
-                echo "Removing all  docker images with name gogolevjuri/firstapp "
-                sh "docker rmi $(docker images | grep 'gogolevjuri' | grep 'firstapp' ) "
-            }
-        }
         stage('Docker Build'){
             steps{
                 echo "Create docker image gogolevjuri/firstapp:${DOCKER_TAG} "
