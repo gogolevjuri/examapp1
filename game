@@ -115,7 +115,8 @@ html, body {
 <body>
 <!-- partial:index.partial.html -->
 <meta name="viewport" content="width=device-width,user-scalable=no">
-
+<div>
+<h1>Hello world</h1></div>
 <div id="container">
 	<div id="game"></div>
 	<div id="score">0</div>
