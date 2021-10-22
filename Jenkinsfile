@@ -32,9 +32,8 @@ pipeline {
                     sh "docker login -u gogolevjuri -p ${dockerHubPwd}"
                 }
                 echo 'Deploying....2'
-                //sh "docker tag gogolevjuri/firstapp:latest gogolevjuri/firstapp:${DOCKER_TAG}"
-                //sh "docker push gogolevjuri/firstapp:${DOCKER_TAG} "
-                //sh "docker push gogolevjuri/firstapp:latest "
+                sh "docker tag gogolevjuri/firstapp:latest gogolevjuri/firstapp:${DOCKER_TAG}"
+                sh "docker push gogolevjuri/firstapp:${DOCKER_TAG} "
             }
         }
         stage('clear docker images') {
